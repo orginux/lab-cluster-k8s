@@ -1,9 +1,16 @@
+---
 variant: fcos
 version: 1.4.0
 passwd:
   users:
     - name: core
       groups:
-       - sudo
+        - sudo
       ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDq3a8QQD9JT0eCna1dPqjMqzeWrV1sUgkn99JjD+DsHsss8zx3KvPTWktkKkCzN8NoYuYajBulg9NMODE0wsKFpBgs7t8ngiObqUVLzlZ77djr9LVkgwMpUqXv6qJT7mJ7Ew+M1tud8T9vLMCqcC+/c2lOHrXKxZo6cx7Drvr7RYLUCXqwHvsDeu1IDwq2yUQNZvDY2aCoy+Kx7kNxJpB07DnzZgOrApWpY4jrDsz1RuIo5j+TE2YuZJkOgFmh5Q2yM/+U/DFvHrNXpWotlfVGU/pec+NbI98LZxwVHQQ/ojMEoqhDfFVxgGAldCZ+I4dUNPzLUSE0s5YTzGPTO9RhDEG0itYzB/0gDeQCNEDSKjRqC6ww2niiEizaToWtXMUVH/KFmlxvnj84GFz4gDsZiSx6AMruqWOeYXj3t3C7W5MPTNCCcA2hFyyEgEL78qeH64Bl6FY49OxMc1FVZD52PjXeo5pMRzrv3o2yLyEWqQlT1jLsuQoWJzmAWUYhIMc= orginux@orginux-thinkpad
+storage:
+  files:
+    - path: /etc/sysctl.d/reverse-path-filter.conf
+      contents:
+        inline: |
+          net.ipv4.conf.all.rp_filter=1

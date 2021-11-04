@@ -14,5 +14,15 @@
         ]
       }
     ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/sysctl.d/reverse-path-filter.conf",
+        "contents": {
+          "source": "data:,net.ipv4.conf.all.rp_filter%3D1%0A"
+        }
+      }
+    ]
   }
 }
