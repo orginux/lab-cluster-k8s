@@ -1,6 +1,14 @@
 ```bash
 docker run --interactive --rm quay.io/coreos/butane:release --pretty --strict < proxmox.bu > proxmox.ign
 ```
+```bash
+coreos-installer install /dev/sda -I https://raw.githubusercontent.com/orginux/lab-cluster-k8s/main/proxmox.ign
+```
+
+If some issues with startup OS need add:
+```bash
+--append-karg console=tty0
+```
 
 ```bash
 ssh -i fedora-coreos core@fedora-coreos-0.local
