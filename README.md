@@ -2,7 +2,7 @@
 docker run --interactive --rm quay.io/coreos/butane:release --pretty --strict < fcos-proxmox.yml > fcos-proxmox.ign
 ```
 ```bash
-coreos-installer install /dev/sda -I https://raw.githubusercontent.com/orginux/lab-cluster-k8s/main/proxmox.ign
+coreos-installer install /dev/sda -I https://raw.githubusercontent.com/orginux/lab-cluster-k8s/main/fcos-proxmox.ign
 ```
 
 If some issues with startup OS need add:
