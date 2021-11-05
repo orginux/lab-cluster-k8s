@@ -8,6 +8,9 @@ spec:
     templates:
       serviceTemplate: svc-template
   configuration:
+    zookeeper:
+      nodes:
+        - host: zookeeper.zoons
     clusters:
       - name: "simple-ch"
         templates:
