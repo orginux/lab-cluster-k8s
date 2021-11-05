@@ -65,3 +65,29 @@ Terminal 2:
 ```bash
 docker run --network host --rm -it yandex/clickhouse-client:21.8.10.19 --host 127.0.0.1 --user clickhouse_operator --ask-password
 ```
+Check cluster:
+```sql
+SELECT cluster, shard_num, replica_num, host_name FROM system.clusters;
+```
+
+## Create test table
+[ClickHouse doc](https://clickhouse.com/docs/en/sql-reference/statements/insert-into/)
+```sql
+CREATE TABLE insert_select_testtable
+(
+    `a` Int8,
+    `b` String,
+    `c` Int8
+)
+ENGINE = MergeTree()
+ORDER BY a
+```
+```sql
+INSERT INTO insert_select_testtable (*) VALUES (1, 'a', 1) ;
+```
+```sql
+SELECT * FROM insert_select_testtable;
+```
+
+## Create distributet table
+https://cloud.yandex.com/en-ru/docs/managed-clickhouse/tutorials/sharding
