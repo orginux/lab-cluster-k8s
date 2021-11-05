@@ -55,3 +55,13 @@ Create CH cluster:
 ```bash
 kustomize build chi/ | k apply -f -
 ```
+
+Try connect to CH:
+Terminal 1:
+```bash
+k port-forward service/clickhouse-simple-chi 9000:9000
+```
+Terminal 2:
+```bash
+docker run --network host --rm -it yandex/clickhouse-client:21.8.10.19 --host 127.0.0.1 --user clickhouse_operator --ask-password
+```
