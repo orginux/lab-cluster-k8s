@@ -1,0 +1,42 @@
+---
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+metadata:
+  name: "simple-chi"
+spec:
+  defaults:
+    templates:
+      serviceTemplate: svc-template
+  configuration:
+    clusters:
+      - name: "simple-ch"
+        templates:
+          podTemplate: clickhouse-20.7
+        layout:
+          shardsCount: 1
+          replicasCount: 2
+  templates:
+    podTemplates:
+      - name: clickhouse-20.7
+        spec:
+          containers:
+            - name: clickhouse
+              image: yandex/clickhouse-server:21.9.5.16
+              volumeMounts:
+                - name: clickhouse-storage
+                  mountPath: /var/lib/clickhouse
+          volumes:
+            - name: clickhouse-storage
+              emptyDir:
+                medium: ""
+                sizeLimit: 1Gi
+    serviceTemplates:
+      - name: svc-template
+        generateName: clickhouse-{chi}
+        spec:
+          ports:
+            - name: http
+              port: 8123
+            - name: tcp
+              port: 9000
+          type: ClusterIP
